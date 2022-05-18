@@ -1,0 +1,120 @@
+{
+  "sites": [
+    {
+      "app": "Serasa",
+      "url": "https://api-auth.serasa.com.br/v1/user/cpf",
+      "valid": "response.status == 200",
+      "error": "response.status == 400",
+      "json": "{{\"cpf\": \"{cpf}\"}}",
+      "id": 0,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "Banco Toyota",
+      "url": "https://institucional.bancotoyota.com.br/api/sso/autenticacao/senha/buscarPerguntas.json",
+      "valid": "jsonData['result'] == 'SUCCESS'",
+      "error": "response.status == 400",
+      "form": "cpf={cpf}&perfil=1",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "id": 1,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "FGV Conhecimento",
+      "url": "https://inscricao.conhecimento.fgv.br/RecuperarSenha/SolicitarEmail",
+      "valid": "'CPF n&#xE3;o encontrado.' not in responseContent and 'Insira um n&#xFA;mero de CPF v&#xE1;lido.' not in responseContent",
+      "error": "response.status == 400",
+      "form": "cpf={cpf}",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}",
+      "id": 2,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "SEBRAE",
+      "url": "https://gestao-amei-backend.sebrae.com.br/gestao-amei/public/v1/users/registered/{cpf}",
+      "valid": "jsonData['isExiste'] == True",
+      "error": "response.status == 400",
+      "id": 3,
+      "method": "GET",
+      "silent": true
+    },
+    {
+      "app": "InfoJobs",
+      "url": "https://www.infojobs.com.br/RememberPass.aspx",
+      "valid": "'Enviamos um e-mail para' in soup.find('span', {'id': 'cRemPassCandidate_lblResult2'}).getText()",
+      "error": "response.status == 400",
+      "form": "__VIEWSTATE=jjO4UG%2FQ9T8VoW3wuRKbW1sofjNlKB%2FICb5qwBebFB%2B9RBXfiE98TawqARzQQfW7yr%2FlOXbjUSBitG2oJ1n46AqDDDPLFOl7xk91VHl3ZbOXGUY66eOinyaPxYJXSbSl4nIuPGPgVegIuKxxMKFDor0e1YknR7gYGUZd3AfbU3Md%2F6Y%2Bcxn1GyjL%2BB%2BmNEQZYne7V1Pzg6rItNg6KfedjuobnMyO2bL7t14G7f83o7zG5fmyebX0DNJ9uZ50bKHMECeG25Ll%2B19rKiB5N5mzmSBK4sZZVZujAN825dvse%2F97VLkdaf0vzwil2iGZWHTOo2Gcss2dcoatWf%2FFIcQJRdarv7aeEPeD6m0n3wGsSt5DIxrPvqdxeOPqavuAB%2FAnq4srBPBmZXPUGUioI6vhaE7ISof9AcoQWVZsNn8U%2Br5TCkaUG4vZu6I86HUWPIQ%2B1E%2FRv7JB7LDhEzHdU7atVjiD83kGfXqbe%2Bk1v5jBlpRyY95rP2J3BRiZZVYf%2B1pmSWcMLWFVN%2FoCtJTLJdO5%2BlKoDiE5QitGKjxS6ckKhmOLw7B8rZV11CfuDOlrIjkHf2GN7YhcH9XVnrTOK6GjOPKCbbHlnYy9Hy8pvm8T%2BwW64gwWi2kXojtLIMq2HKJGi1wE81HtcKrAJwuqbn5WfaOC3BdIeDY%2B%2BRkCgpKxSfDXBvOwDIA5FUp3DSxLVbPvfEHOIEMP8HxxT80qq1ieMu96ce8UixEVV7SltJsFs3zgEpqU458lbKmYimioA3a9NDvnX%2FVB17BUbMScnYDC0M%2F7eAHDzzuwaoH48IbWVavl%2FZVX1NljHVvof%2B15pWgqO0GtB81zHx5KCqews4Z0pqYMiEV08LsUUbZiOV9tjtCEOaedKYcSPvj9Y5kTuWphuAw1C9JVpAQCOtTCcDbvIjDkoI%2Bq9bT4Lmrc6vqpXmK%2BIDqMHQV62FCyFdZ6qFYPiE02PcQO5PH6%2Fvj3V1s00%2Ba0gpIXl8wX%2BLnuFKHi0xLUcxKrBkpS0ZaYMlH8geMY3Ajbcm8UtCvfByICjARDzMwbt6EnqsW9m1oKSSX8UFivO5mZ%2Bc50kBLaB%2FsE%2F7%2FjuJjV8sZBZ%2B4J68AWhd534cW8bzqy06hb9RZTbAcLg3eRs4HwJOF6MF6XSxDgsD1eRDTE9NzF%2F042UT3WaTUzbB79kkPXHyG8yhdMNVo%2B5sfpexm3ivrqZ1rbm7Y7VtWcT0HAKEyIWGZ6f7lEvGhewuxFavmPUbmzgSsdoqU7Q9JQhGloOP4fNZn8msc3pAXy3u02CKCZTh%2F5r4kVfqx1O5ujx4hTlxxE%2BHR3h5mk006bbslRgncW9GtnN%2FqUj5Di%2F458k61DM6MG0Kyx7fXNqoWAa4fHFqCHArDo1J3V1tJGRMH2D055nbUX7JYfzjWLxrrffGaygvSSHkNjrECLJfueZoJJJVc1wR09OsuNAfE42OCXsRfLDB305pWoOmUUEVxZZSVJRb4uzbJB3acoDr8QVF7nBPhPWTdUFSJvnuzS2l2jiMjU%2FYlmEYpLmnIWs268Go%2FGKlkV%2FFwu2UNHuBGY7fMudhwxLnMXqFXZ8VbZsYbD%2BAsM03AtLrbkwkgibkhFszTXGrOzx%2BTF9EoWbvRY8oI8OzlpAnoXLAuy716W%2FoDLzD1cT6QEwMWfeIMsKofY0A%3D%3D&__VIEWSTATEGENERATOR=D4C35ECA&cRemPassEmailCompany%24txtEmail=&cRemPassEmailCompany%24txtCPNJ=&cRemPassCandidate%24txtEmail=&cRemPassCandidate%24txtCPF={cpf}&cRemPassCandidate%24rbtlstSend=1&cRemPassCandidate%24btnStep2=Enviar",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "id": 4,
+      "method": "POST",
+      "silent": false
+    },
+    {
+      "app": "Hospital das Clínicas USP",
+      "url": "https://www.hcrp.usp.br/ConsultaFinanFornecedorFAEPA/login.aspx",
+      "valid": "'verifique se esteja informando corretamente' not in soup.find('span', {'id': 'lbErro'}).getText()",
+      "error": "response.status == 400",
+      "form": "__EVENTTARGET=&__EVENTARGUMENT=&__VIEWSTATE=%2FwEPDwUKMTc5MjA4Njk3MA9kFgQCAw9kFgICCw8PFgIeBFRleHRlZGQCBQ8PFgIfAGVkZGSrAVxJm9YnICEBWWOcIeJe7si3jvFJq7frXciQygDeeQ%3D%3D&__VIEWSTATEGENERATOR=E6A3542E&__EVENTVALIDATION=%2FwEdAAbGCpHpP%2BUokQFG%2FnrFfQ6S3XNoXAaXviJtIEo7BD%2FqzjGXEyDwISoX7at13JdEErA4BECxRWYBdXeBxOI8lhYmFCD3xtPQXQqZZrvGH7lGmQthpy6mNPvEAlo8ER76d6uRTYAJ4cVSX4%2F0PCEfQRCKrWy5BfCPimxcWXQPVR%2BuYg%3D%3D&txt_login={cpf}&txt_senha=&bt_EsqueciSenha=Esqueci+a+senha",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "id": 5,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "Universidade Anhembi Morumbi",
+      "url": "https://apiuam.ead.br/v1/auth/recover",
+      "valid": "jsonData['status'] == 'success'",
+      "error": "response.status == 400",
+      "form": "cpf={cpf}",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "id": 6,
+      "method": "POST",
+      "silent": false
+    },
+    {
+      "app": "Universidade São Judas",
+      "url": "https://apisjt.ead.br/v1/auth/recover",
+      "valid": "jsonData['status'] == 'success'",
+      "error": "response.status == 400",
+      "form": "cpf={cpf}",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "id": 7,
+      "method": "POST",
+      "silent": false
+    },
+    {
+      "app": "Universidade UFABC",
+      "url": "https://acesso.ufabc.edu.br/cadastro/index",
+      "valid": "'favor entrar em contato com o setor' not in responseContent",
+      "error": "response.status == 400",
+      "form": "CadastroIndexForm%5Btipo_doc%5D=cpf&CadastroIndexForm%5Bnum_doc%5D={cpf}&yt0=Continuar",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "id": 8,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "Claretiano - Centro Universitário",
+      "url": "https://portal.redeclaretiano.edu.br/br/remember/login",
+      "valid": "'nenhuma' not in responseContent",
+      "error": "response.status == 400",
+      "form": "cpf={cpf}&commit=Recuperar",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "id": 9,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "UNIP",
+      "url": "https://api.unip.br/sistemas/inscricoes/v1/inscricoes/{cpf}",
+      "valid": "len(jsonData) > 0",
+      "error": "response.status == 400",
+      "id": 10,
+      "method": "GET",
+      "silent": true
+    }
+  ]
+}
