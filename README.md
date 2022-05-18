@@ -9,11 +9,11 @@
 
 #### Buscar por CPF
 ```python
-python blackbird.py -cpf XXXXXXXXXXX
+python hermes.py -cpf XXXXXXXXXXX
 ```
 #### Buscar com modo stealth ativo
 ```python
-python blackbird.py -cpf XXXXXXXXXXX --stealth
+python hermes.py -cpf XXXXXXXXXXX --stealth
 ```
 
 #### List supportted sites
