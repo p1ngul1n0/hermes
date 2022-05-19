@@ -12,16 +12,17 @@
 python hermes.py -cpf XXXXXXXXXXX
 ```
 #### Buscar com modo stealth ativo
+Realiza a busca apenas em sites que não causam alguma ação como o envio de e-mails ou SMS.
 ```python
 python hermes.py -cpf XXXXXXXXXXX --stealth
 ```
 
-#### List supportted sites
+#### Listar sites suportados
 ```python
 python hermes.py --list-sites
 ```
 
-## Sites suportados <a name="social-networks"></a> ![](https://img.shields.io/badge/12--red)
+## Sites suportados <a name="social-networks"></a> ![](https://img.shields.io/badge/18--red)
 <details>
   <summary></summary>
   
@@ -36,8 +37,14 @@ python hermes.py --list-sites
 9. Universidade UFABC
 10. Claretiano - Centro Universitário
 11. UNIP
-12. Situação Cadastral [NÃO FUNCIONAL]
+12. QualiCorp
+13. 99 Jobs
+14. Natura
+15. Correios
+16. Eventim
+17. Ticket360
+18. Ingressos Corinthians
 </details>
 
-## Supersonic speed :rocket:
-Blackbird sends async HTTP requests, allowing a lot more speed when discovering user accounts.
+## Velocidade supersônica :rocket:
+As requisições HTTP são enviadas de forma assíncrona, permitindo muito mais velocidade durante a varredura pelo CPF.
