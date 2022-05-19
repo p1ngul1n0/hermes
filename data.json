@@ -48,6 +48,7 @@
       "error": "response.status == 400",
       "form": "__VIEWSTATE=jjO4UG%2FQ9T8VoW3wuRKbW1sofjNlKB%2FICb5qwBebFB%2B9RBXfiE98TawqARzQQfW7yr%2FlOXbjUSBitG2oJ1n46AqDDDPLFOl7xk91VHl3ZbOXGUY66eOinyaPxYJXSbSl4nIuPGPgVegIuKxxMKFDor0e1YknR7gYGUZd3AfbU3Md%2F6Y%2Bcxn1GyjL%2BB%2BmNEQZYne7V1Pzg6rItNg6KfedjuobnMyO2bL7t14G7f83o7zG5fmyebX0DNJ9uZ50bKHMECeG25Ll%2B19rKiB5N5mzmSBK4sZZVZujAN825dvse%2F97VLkdaf0vzwil2iGZWHTOo2Gcss2dcoatWf%2FFIcQJRdarv7aeEPeD6m0n3wGsSt5DIxrPvqdxeOPqavuAB%2FAnq4srBPBmZXPUGUioI6vhaE7ISof9AcoQWVZsNn8U%2Br5TCkaUG4vZu6I86HUWPIQ%2B1E%2FRv7JB7LDhEzHdU7atVjiD83kGfXqbe%2Bk1v5jBlpRyY95rP2J3BRiZZVYf%2B1pmSWcMLWFVN%2FoCtJTLJdO5%2BlKoDiE5QitGKjxS6ckKhmOLw7B8rZV11CfuDOlrIjkHf2GN7YhcH9XVnrTOK6GjOPKCbbHlnYy9Hy8pvm8T%2BwW64gwWi2kXojtLIMq2HKJGi1wE81HtcKrAJwuqbn5WfaOC3BdIeDY%2B%2BRkCgpKxSfDXBvOwDIA5FUp3DSxLVbPvfEHOIEMP8HxxT80qq1ieMu96ce8UixEVV7SltJsFs3zgEpqU458lbKmYimioA3a9NDvnX%2FVB17BUbMScnYDC0M%2F7eAHDzzuwaoH48IbWVavl%2FZVX1NljHVvof%2B15pWgqO0GtB81zHx5KCqews4Z0pqYMiEV08LsUUbZiOV9tjtCEOaedKYcSPvj9Y5kTuWphuAw1C9JVpAQCOtTCcDbvIjDkoI%2Bq9bT4Lmrc6vqpXmK%2BIDqMHQV62FCyFdZ6qFYPiE02PcQO5PH6%2Fvj3V1s00%2Ba0gpIXl8wX%2BLnuFKHi0xLUcxKrBkpS0ZaYMlH8geMY3Ajbcm8UtCvfByICjARDzMwbt6EnqsW9m1oKSSX8UFivO5mZ%2Bc50kBLaB%2FsE%2F7%2FjuJjV8sZBZ%2B4J68AWhd534cW8bzqy06hb9RZTbAcLg3eRs4HwJOF6MF6XSxDgsD1eRDTE9NzF%2F042UT3WaTUzbB79kkPXHyG8yhdMNVo%2B5sfpexm3ivrqZ1rbm7Y7VtWcT0HAKEyIWGZ6f7lEvGhewuxFavmPUbmzgSsdoqU7Q9JQhGloOP4fNZn8msc3pAXy3u02CKCZTh%2F5r4kVfqx1O5ujx4hTlxxE%2BHR3h5mk006bbslRgncW9GtnN%2FqUj5Di%2F458k61DM6MG0Kyx7fXNqoWAa4fHFqCHArDo1J3V1tJGRMH2D055nbUX7JYfzjWLxrrffGaygvSSHkNjrECLJfueZoJJJVc1wR09OsuNAfE42OCXsRfLDB305pWoOmUUEVxZZSVJRb4uzbJB3acoDr8QVF7nBPhPWTdUFSJvnuzS2l2jiMjU%2FYlmEYpLmnIWs268Go%2FGKlkV%2FFwu2UNHuBGY7fMudhwxLnMXqFXZ8VbZsYbD%2BAsM03AtLrbkwkgibkhFszTXGrOzx%2BTF9EoWbvRY8oI8OzlpAnoXLAuy716W%2FoDLzD1cT6QEwMWfeIMsKofY0A%3D%3D&__VIEWSTATEGENERATOR=D4C35ECA&cRemPassEmailCompany%24txtEmail=&cRemPassEmailCompany%24txtCPNJ=&cRemPassCandidate%24txtEmail=&cRemPassCandidate%24txtCPF={cpf}&cRemPassCandidate%24rbtlstSend=1&cRemPassCandidate%24btnStep2=Enviar",
       "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
+      "returnData": "soup.find('span', {'id': 'cRemPassCandidate_lblResult2'}).getText()",
       "id": 4,
       "method": "POST",
       "silent": false
@@ -88,7 +89,7 @@
     {
       "app": "Universidade UFABC",
       "url": "https://acesso.ufabc.edu.br/cadastro/index",
-      "valid": "'favor entrar em contato com o setor' not in responseContent",
+      "valid": "'favor entrar em contato com o setor' not in responseContent and response.status == 200",
       "error": "response.status == 400",
       "form": "CadastroIndexForm%5Btipo_doc%5D=cpf&CadastroIndexForm%5Bnum_doc%5D={cpf}&yt0=Continuar",
       "headers": "{'Content-Type': 'application/x-www-form-urlencoded'}",
@@ -110,10 +111,91 @@
     {
       "app": "UNIP",
       "url": "https://api.unip.br/sistemas/inscricoes/v1/inscricoes/{cpf}",
-      "valid": "len(jsonData) > 0",
+      "valid": "response.status == 200 and len(jsonData) > 0 ",
       "error": "response.status == 400",
+      "returnData": "repr(jsonData)",
       "id": 10,
       "method": "GET",
+      "silent": true
+    },
+    {
+      "app": "QualiCorp",
+      "url": "https://servicosportal.qualicorp.net/area-logada-ciam/user/check/{cpf}?api-key=91ce5bb2-d177-496b-a107-b0cdb6c14f53",
+      "valid": "'User does not exist.' not in responseContent",
+      "error": "response.status == 400",
+      "headers": "{'Content-Type': 'application/json;charset=UTF-8'}",
+      "string": "{}",
+      "id": 12,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "99 Jobs",
+      "url": "https://www.99jobs.com/users/forgot_my_user",
+      "valid": "jsonData['accounts_quantity'] > 0",
+      "error": "response.status == 400",
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}",
+      "form": "cpf={cpf}",
+      "returnData": "repr(jsonData)",
+      "id": 13,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "Natura",
+      "url": "https://apigw.natura.com.br/v1/legacyweb/ecommerce/rest/model/atg/userprofiling/ProfileActor/resetPassword",
+      "valid": "'clientEmail' in jsonData",
+      "error": "response.status == 400",
+      "headers": "{'Content-Type': 'application/json','Client_id': '8242b396-a786-335e-8ecb-5279d3b8054a'}",
+      "json": "{{\"cpf\": \"{cpf}\"}}",
+      "returnData": "repr(jsonData)",
+      "id": 14,
+      "method": "POST",
+      "silent": false
+    },
+    {
+      "app": "Correios",
+      "url": "https://meucorreios.correios.com.br/app/cadastro/esqueci/checa-identificacao.php?pessoa=pf&identificacao={cpf}",
+      "valid": "'email' in jsonData",
+      "error": "response.status == 400",
+      "returnData": "repr(jsonData)",
+      "id": 15,
+      "method": "GET",
+      "silent": false
+    },
+    {
+      "app": "Eventim",
+      "url": "https://www.eventim.com.br/api/cpf/validate?cpfNumber={cpf}&affiliate=BR1",
+      "valid": "response.status == 406",
+      "error": "response.status == 400",
+      "id": 16,
+      "method": "GET",
+      "silent": true
+    },
+    {
+      "app": "Ticket360",
+      "url": "https://www.ticket360.com.br/usuario_esqueci-senha/search",
+      "valid": "response.status == 200",
+      "error": "response.status == 400",
+      "returnData": "repr(jsonData)",
+      "form": "document={cpf}",
+      "formatted": true,
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}",
+      "id": 17,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "Ingressos Corinthians",
+      "url": "https://www.ingressoscorinthians.com.br/scripts/esqueci-minha-senha.asp",
+      "valid": "'Sucesso' in responseContent",
+      "error": "response.status == 400",
+      "returnData": "soup.find('span', {'id': 'msg'}).getText()",
+      "form": "cpf={cpf}",
+      "formatted": true,
+      "headers": "{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}",
+      "id": 17,
+      "method": "POST",
       "silent": true
     }
   ]
