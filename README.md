@@ -22,7 +22,7 @@ python hermes.py -cpf XXXXXXXXXXX --stealth
 python hermes.py --list-sites
 ```
 
-## Sites suportados <a name="social-networks"></a> ![](https://img.shields.io/badge/18--red)
+## Sites suportados <a name="social-networks"></a> ![](https://img.shields.io/badge/21--red)
 <details>
   <summary></summary>
   
@@ -33,9 +33,9 @@ python hermes.py --list-sites
 5. InfoJobs
 6. Hospital das Clínicas USP
 7. Universidade Anhembi Morumbi
-8. Universidade São Judas
+8. Universidade SÃ£o Judas
 9. Universidade UFABC
-10. Claretiano - Centro Universitário
+10. Claretiano - Centro UniversitÃ¡rio
 11. UNIP
 12. QualiCorp
 13. 99 Jobs
@@ -44,6 +44,9 @@ python hermes.py --list-sites
 16. Eventim
 17. Ticket360
 18. Ingressos Corinthians
+19. Unimed Seguradora
+20. Porto Seguro
+21. Movida
 </details>
 
 ## Velocidade supersônica :rocket:
