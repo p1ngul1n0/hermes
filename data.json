@@ -194,9 +194,46 @@
       "form": "cpf={cpf}",
       "formatted": true,
       "headers": "{'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}",
-      "id": 17,
+      "id": 18,
       "method": "POST",
       "silent": true
+    },
+    {
+      "app": "Unimed Seguradora",
+      "url": "https://connectionbus.segurosunimed.com.br/seguros-unimed/prd/v1/usuario/esqueci-senha",
+      "valid": "jsonData['codigo'] == '0'",
+      "error": "response.status == 400",
+      "returnData": "repr(jsonData)",
+      "json": "{{\"aplicacaoOrigem\": \"PORTAL_PF\",\"usuario\": \"{cpf}\"}}",
+      "formatted": false,
+      "headers": "{'Content-Type': 'application/json','X-Ibm-Client-Id': '95cc8041-dbc6-4092-8e0e-2add0de56d79'}",
+      "id": 19,
+      "method": "POST",
+      "silent": true
+    },
+    {
+      "app": "Porto Seguro",
+      "url": "https://www.portoseguro.com.br/backend-portal/web/api/wem/v1/ativacao/usuario/53555929704",
+      "valid": "jsonData['status'] == 200",
+      "error": "response.status == 400",
+      "returnData": "repr(jsonData)",
+      "formatted": false,
+      "headers": "{'Content-Type': 'application/json;charset=UTF-8','Corporativorequestheader': 'eyJzZXNzaW9uSWQiOiI4NTcxOWMyMGY4MDFmODYzYmI4YTZhNGM5MzdlZjQ3NTU3NjAwZmVlODkxMTJjNTY4YjRjMTg1ZTU1MzQ3NGNmIiwib3JnYW5pemF0aW9uSWQiOiJkNXhjYm9iNSIsInJlcXVlc3RJZCI6ImUwMzFiYmRhLWVjNzktNGExNS1hNDYyLTZmZjljYTQ3YWM3ZSIsInZhbGlkYXRpb24iOiJyZXZpZXciLCJpcEFkZHJlc3MiOiIifQ=='}",
+      "id": 20,
+      "method": "GET",
+      "silent": true
+    },
+    {
+      "app": "Movida",
+      "url": "https://bff-b2c.movidacloud.com.br/api/v1/usuario/recuperar-senha",
+      "valid": "jsonData['success'] == True",
+      "error": "response.status == 400",
+      "json": "{{\"cpf\": \"{cpf}\",\"tipo\": \"email\"}}",
+      "returnData": "repr(jsonData)",
+      "headers": "{'Content-Type': 'application/json'}",
+      "id": 21,
+      "method": "POST",
+      "silent": false
     }
   ]
 }

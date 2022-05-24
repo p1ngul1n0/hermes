@@ -68,7 +68,7 @@ async def makeRequest(session,u,cpf):
         if arguments.stealth and u['silent'] == False:
             print (f'{Fore.CYAN}[+] - {u["app"]} não executado pois modo stealth está ativo - {url} \033[0m')
         else:
-            async with session.request(u["method"],url,json=jsonBody,data=formData,headers=headers, ssl=False) as response:
+            async with session.request(u["method"],url,json=jsonBody,proxy=proxy,data=formData,headers=headers, ssl=False) as response:
                 responseContent = await response.text()
                 
                 if 'content-type' in response.headers and "application/json" in response.headers["Content-Type"]:
