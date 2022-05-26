@@ -213,7 +213,7 @@
     },
     {
       "app": "Porto Seguro",
-      "url": "https://www.portoseguro.com.br/backend-portal/web/api/wem/v1/ativacao/usuario/53555929704",
+      "url": "https://www.portoseguro.com.br/backend-portal/web/api/wem/v1/ativacao/usuario/{cpf}",
       "valid": "jsonData['status'] == 200",
       "error": "response.status == 400",
       "returnData": "repr(jsonData)",
