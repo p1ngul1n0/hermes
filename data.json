@@ -234,6 +234,18 @@
       "id": 21,
       "method": "POST",
       "silent": false
+    },
+    {
+      "app": "Petz",
+      "url": "https://www.petz.com.br/api/v3/public/client/access",
+      "valid": "'error' not in responseContent",
+      "error": "response.status == 400",
+      "json": "{{\"cpf\": \"{cpf}\"}}",
+      "returnData": "repr(jsonData)",
+      "headers": "{'Content-Type': 'application/json','Accept':'application/json, text/plain, */*'}",
+      "id": 22,
+      "method": "POST",
+      "silent": true
     }
   ]
 }
