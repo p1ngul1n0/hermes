@@ -23,7 +23,7 @@ python hermes.py -cpf XXXXXXXXXXX --stealth
 python hermes.py --list-sites
 ```
 
-## Sites suportados <a name="social-networks"></a> ![](https://img.shields.io/badge/21--red)
+## Sites suportados <a name="social-networks"></a> ![](https://img.shields.io/badge/22--red)
 <details>
   <summary></summary>
   
@@ -48,6 +48,7 @@ python hermes.py --list-sites
 19. Unimed Seguradora
 20. Porto Seguro
 21. Movida
+22. Petz
 </details>
 
 ## Velocidade supersônica :rocket:
